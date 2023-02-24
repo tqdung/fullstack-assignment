@@ -1,0 +1,12 @@
+version: "3"
+services:
+  fullstack-assignment:
+    image: fullstack-assignment
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: fullstack-assignment
+    ports:
+      # - "80:80"
+      # - "443:443"
+      - "3000:3000"
