@@ -7,7 +7,6 @@ const logger = require('morgan');
 
 // routes
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const cafeRouter = require('./routes/cafe');
 const employeeRouter = require('./routes/employee');
 
@@ -20,7 +19,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/api/cafe', cafeRouter);
 app.use('/api/employee', employeeRouter);
 
