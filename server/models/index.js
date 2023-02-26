@@ -11,6 +11,7 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+console.log(process.env.NODE_ENV, { env });
 
 const connection = mysql.createConnection({ host: config.host, user: config.username, password: config.password });
 connection.connect(err => {

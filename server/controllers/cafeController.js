@@ -4,15 +4,26 @@ const models = require('../models');
 
 class CafeController {
     constructor() { }
-
     /**
      * 
      * @param {string} location 
      */
     async getList(location) {
         try {
-            const where = location ? { location: { [Op.like]: `${location}%` } } : {};
-            return await models.Cafe.findAll({ where });
+            const where = location ? { location: { [Op.like]: `%${location}%` } } : {};
+            return await models.Cafe.findAll({
+                where: where,
+                attributes: {
+                    include: [
+                        [models.sequelize.fn('COUNT', models.sequelize.col('Employees.id')), 'employees']
+                    ]
+                },
+                include: [{
+                    model: models.Employee,
+                    attributes: []
+                }],
+                group: ['Cafe.id']
+            });
         } catch (error) {
             return error;
         }

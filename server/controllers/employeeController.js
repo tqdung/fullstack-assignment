@@ -20,8 +20,10 @@ class EmployeeController {
                     'name',
                     'email_address',
                     'phone_number',
+                    'gender',
                     [models.Sequelize.literal('IF(Employee.cafe_id = NULL, 0, DATEDIFF(now(), Employee.updated_at))'), 'days_worked'],
                     [models.Sequelize.literal('Cafe.name'), 'cafe'],
+                    [models.Sequelize.literal('Cafe.id'), 'cafe_id'],
                 ],
                 include: [{
                     model: models.Cafe,
@@ -112,8 +114,7 @@ class EmployeeController {
     async removeExistingEmployee(employee_id) {
         try {
             return models.Employee.destroy({
-                where: { id: employee_id },
-                truncate: true
+                where: { id: employee_id }
             })
         } catch (error) {
             return error;
