@@ -1,16 +1,14 @@
-import { createContext, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Button, Modal, Popconfirm, Space } from 'antd';
 import { AgGridReact } from 'ag-grid-react';
 import { EditFilled, DeleteFilled } from '@ant-design/icons';
 
-import UpdateCafeForm from '@components/Cafe/UpdateCafeForm';
+import { UpdateCafeForm, CreateNewCafe } from '@components/Cafe';
 
 import { LodashUtils } from '@utils/lodash';
+import { CafeTableContext } from '@src/context/cafe.context';
 
 import { useCafe } from './hook';
-
-const CafeTableContext = createContext<ReturnType<typeof useCafe>>({} as ReturnType<typeof useCafe>);
-
 
 const TableAction = (props) => {
   const { data: cafe } = props;
@@ -53,13 +51,14 @@ export default function CafePage() {
 
   return (
     <CafeTableContext.Provider value={hook}>
+      <CreateNewCafe />
       <AgGridReact
         fullWidthCellRenderer
         className="ag-theme-alpine"
         columnDefs={[
           { field: 'name', headerName: 'Cafe Name' },
           { field: 'location', headerName: 'Location' },
-          { field: 'description', headerName: 'Description' },
+          { field: 'description', headerName: 'Description', minWidth: 600 },
           { field: 'employees', headerName: 'Employees' },
           { field: 'actions', headerName: 'Actions', cellRenderer: TableAction }
         ]}

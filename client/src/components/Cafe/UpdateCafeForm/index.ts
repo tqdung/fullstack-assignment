@@ -1,1 +1,1 @@
-export { default } from './UpdateCafeForm';
+export { default as UpdateCafeForm } from './UpdateCafeForm';

@@ -30,8 +30,8 @@ That project is an demo for a CRUD application named Cafe manager, which include
 | ![Ant Design] | https://ant.design/ |
 | ![TypeScript] | https://www.typescriptlang.org/ |
 | ![Jest] | https://jestjs.io/ |
-| Another | Create React App: https://create-react-app.dev/ <br> Create React App config override: https://craco.js.org/ <br> Lodash: https://lodash.com/ <br> Axios: https://axios-http.com/docs/intro <br> AG-Grid: https://www.ag-grid.com/
-|
+| Another | Create React App: https://create-react-app.dev/ <br> Create React App config override: https://craco.js.org/ <br> Lodash: https://lodash.com/ <br> Axios: https://axios-http.com/docs/intro <br> AG-Grid: https://www.ag-grid.com/|
+<br>
 
 <strong>Backend:</strong>
 | Dependency | Link |

@@ -1,14 +1,13 @@
-import { createContext, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { Button, Modal, Popconfirm, Space } from 'antd';
 import { EditFilled, DeleteFilled } from '@ant-design/icons';
 
-import { UpdateEmployeeForm } from '@components/Employee';
+import { UpdateEmployeeForm, CreateNewEmployee } from '@components/Employee';
 
 import { useEmployee } from "./hook";
 import { LodashUtils } from '@utils/lodash';
-
-const EmployeeTableContext = createContext<ReturnType<typeof useEmployee>>({} as ReturnType<typeof useEmployee>);
+import { EmployeeTableContext } from '@src/context/employee.context';
 
 const TableAction = (props) => {
   const { data: employee } = props;
@@ -51,6 +50,7 @@ export default function Employee() {
 
   return (
     <EmployeeTableContext.Provider value={hook}>
+      <CreateNewEmployee />
       <AgGridReact
         fullWidthCellRenderer
         className="ag-theme-alpine"
