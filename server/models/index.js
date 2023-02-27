@@ -4,14 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const process = require('process');
 
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const mysql = require('mysql2');
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
-console.log(process.env.NODE_ENV, { env });
 
 const connection = mysql.createConnection({ host: config.host, user: config.username, password: config.password });
 connection.connect(err => {

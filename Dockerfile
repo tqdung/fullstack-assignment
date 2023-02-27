@@ -7,7 +7,6 @@ RUN cd /app/client && npm install && npm run build
 RUN cp -r /app/client/build/* /app/server/public
 RUN cd /app/server && npm install
 
-ARG NODE_ENV=production
+ENV NODE_ENV=production
 
-EXPOSE 80
 CMD [ "node", "/app/server/bin/www" ]

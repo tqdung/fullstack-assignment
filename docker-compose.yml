@@ -1,10 +1,18 @@
 version: "3"
 services:
-  fullstack-assignment:
-    image: fullstack-assignment
+  mysql-service:
+    image: mysql/mysql-server:8.0.28
+    environment:
+      MYSQL_ROOT_PASSWORD: root@123456
+      MYSQL_DATABASE: fullstack_assignment
+    container_name: mysql-service
+    ports:
+      - "3306:3306"
+  web-service:
+    image: web-service
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: fullstack-assignment
+    container_name: web-service
     ports:
       - "3000:3000"

@@ -7,10 +7,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "sql12601120",
-    "password": "ki19r7u5ki",
-    "database": "sql12601120",
-    "host": "sql12.freesqldatabase.com",
+    "username": "root",
+    "password": "root@123456",
+    "database": "fullstack_assignment",
+    "host": "mysql-service",
     "dialect": "mysql"
   }
 }
