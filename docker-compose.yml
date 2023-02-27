@@ -5,11 +5,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root@123456
       MYSQL_DATABASE: fullstack_assignment
+      MYSQL_ROOT_HOST: "%"
     container_name: mysql-service
     ports:
       - "3306:3306"
   web-service:
     image: web-service
+    environment:
+      NODE_ENV: production
     build:
       context: ./
       dockerfile: Dockerfile
