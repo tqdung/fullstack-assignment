@@ -1,0 +1,5 @@
+.ag-row .ag-cell {
+  display: flex;
+  /* align horizontal */
+  align-items: center;
+}

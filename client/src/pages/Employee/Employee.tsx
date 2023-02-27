@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import { Button, Modal, Popconfirm, Space } from 'antd';
+import { Button, Input, Modal, Popconfirm, Space } from 'antd';
 import { EditFilled, DeleteFilled } from '@ant-design/icons';
 
 import { UpdateEmployeeForm, CreateNewEmployee } from '@components/Employee';
 
-import { useEmployee } from "./hook";
+import { useEmployee } from "@hooks/useEmployee";
 import { LodashUtils } from '@utils/lodash';
 import { EmployeeTableContext } from '@src/context/employee.context';
 
@@ -48,9 +48,20 @@ const TableAction = (props) => {
 export default function Employee() {
   const hook = useEmployee();
 
+  const onSearch = useCallback((value: string) => {
+    hook.fetch({ cafe: value });
+  }, [hook]);
+
   return (
     <EmployeeTableContext.Provider value={hook}>
-      <CreateNewEmployee />
+      <Space style={{ marginBottom: "8px" }}>
+        <Input.Search
+          style={{ width: "250px" }}
+          placeholder="submit cafe name to search"
+          onSearch={onSearch}
+        />
+        <CreateNewEmployee />
+      </Space>
       <AgGridReact
         fullWidthCellRenderer
         className="ag-theme-alpine"

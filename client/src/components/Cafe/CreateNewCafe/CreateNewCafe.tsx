@@ -21,7 +21,7 @@ const CreateNewCafeButton = () => {
     }
 
     return <>
-        <Button type='primary' style={{ marginBottom: "8px" }} onClick={toggle}>Create new Cafe</Button>
+        <Button type='primary' onClick={toggle}>Create new Cafe</Button>
         <Modal open={!!cafeData} title="Create Employee" closable={false} footer={null}>
             <UpdateCafeForm
                 cafe={cafeData as CafeModel}

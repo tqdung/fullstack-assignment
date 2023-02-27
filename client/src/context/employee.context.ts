@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { useEmployee } from '@pages/Employee/hook';
+import { useEmployee } from '@hooks/useEmployee';
 
 export const EmployeeTableContext = createContext<
   ReturnType<typeof useEmployee>

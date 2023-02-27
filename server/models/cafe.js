@@ -31,21 +31,21 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT('long'),
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
     location: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT('long'),
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
     logo: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT('long'),
       allowNull: true
     }
   }, {

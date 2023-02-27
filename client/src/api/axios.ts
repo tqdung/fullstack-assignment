@@ -7,7 +7,7 @@ const AxiosInstance = axios.create({
 
 AxiosInstance.interceptors.response.use(
   (response) => LodashUtils.get(response, 'data', {}),
-  (error) => LodashUtils.get(error, 'response.data', {}),
+  (error) => Promise.reject(LodashUtils.get(error, 'response.data', {})),
 );
 
 export { AxiosInstance };

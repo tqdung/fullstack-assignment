@@ -21,7 +21,7 @@ const CreateNewEmployeeButton = () => {
     }
 
     return <>
-        <Button type='primary' style={{ marginBottom: "8px" }} onClick={toggle}>Create new Employee</Button>
+        <Button type='primary' onClick={toggle}>Create new Employee</Button>
         <Modal open={!!employeeData} title="Create Employee" closable={false} footer={null}>
             <UpdateEmployeeForm
                 employee={employeeData as EmployeeModel}

@@ -8,11 +8,7 @@ import {
   removeOneCafe,
 } from '@api/cafe';
 
-import type {
-  GetListCafeParams,
-  CreateNewCafePayload,
-  UpdateExistingCafePayload,
-} from '@api/cafe';
+import type { GetListCafeParams } from '@api/cafe';
 import { CafeModel } from '@models/cafe.model';
 
 import { useGlobalLoading } from '@hooks/useGlobalLoading';
@@ -37,8 +33,6 @@ export const useCafe = () => {
         notification.error({
           message: LodashUtils.get(error, 'message', 'Can not get list cafe'),
           type: 'error',
-          closeIcon: true,
-          duration: 3000,
         });
       } finally {
         loading.dismiss(loadingId);
@@ -48,15 +42,21 @@ export const useCafe = () => {
   );
 
   const create = useCallback(
-    async (payload: CreateNewCafePayload) => {
+    async (createData: CafeModel) => {
       const loadingId = loading.present({
         title: 'Creating Cafe data',
         subtitle: 'Please wait for a while',
       });
       try {
-        const response = await createNewCafe(payload);
-        const newCafe = LodashUtils.get(response, 'data', null);
-        setCafeList((prev) => prev.concat([new CafeModel(newCafe)]));
+        const response = await createNewCafe({
+          name: createData.name,
+          description: createData.description,
+          location: createData.location,
+          logo: createData.logo,
+        });
+        const created = LodashUtils.get(response, 'data', null);
+        const newCafe = new CafeModel({ ...createData, ...created });
+        setCafeList((prev) => prev.concat([newCafe]));
         notification.success({ type: 'success', message: 'Successful' });
       } catch (error) {
         notification.error({
@@ -66,8 +66,6 @@ export const useCafe = () => {
             'Can not update cafe information',
           ),
           type: 'error',
-          closeIcon: true,
-          duration: 3000,
         });
       } finally {
         loading.dismiss(loadingId);
@@ -77,17 +75,23 @@ export const useCafe = () => {
   );
 
   const update = useCallback(
-    async (payload: UpdateExistingCafePayload) => {
+    async (updateData: CafeModel) => {
       const loadingId = loading.present({
         title: 'Updating Cafe data',
         subtitle: 'Please wait for a while',
       });
       try {
-        await updateExistingCafe(payload);
+        await updateExistingCafe({
+          id: updateData.id,
+          name: updateData.name,
+          description: updateData.description,
+          location: updateData.location,
+          logo: updateData.logo,
+        });
         setCafeList((prev) =>
           prev.map((cafe) =>
-            cafe.id === payload.id
-              ? new CafeModel({ ...cafe, ...payload })
+            cafe.id === updateData.id
+              ? new CafeModel({ ...cafe, ...updateData })
               : cafe,
           ),
         );
@@ -100,8 +104,6 @@ export const useCafe = () => {
             'Can not update cafe information',
           ),
           type: 'error',
-          closeIcon: true,
-          duration: 3000,
         });
       } finally {
         loading.dismiss(loadingId);
@@ -124,8 +126,6 @@ export const useCafe = () => {
         notification.error({
           message: LodashUtils.get(error, 'message', 'Can not remove cafe'),
           type: 'error',
-          closeIcon: true,
-          duration: 3000,
         });
       } finally {
         loading.dismiss(loadingId);

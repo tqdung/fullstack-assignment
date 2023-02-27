@@ -3,8 +3,6 @@ import { Button, Form, Input, Space } from 'antd';
 
 import { CafeModel } from "@models/cafe.model";
 
-import { LodashUtils } from "@utils/lodash";
-
 interface IProps {
     cafe: CafeModel;
     onSubmit: (updated: CafeModel) => void;
@@ -13,9 +11,10 @@ interface IProps {
 function UpdateCafeForm({ cafe, onSubmit, onCancel }: IProps) {
     const [form] = Form.useForm();
 
-    const handleSubmit = (values) => onSubmit(new CafeModel({ ...cafe, ...values }));
-    const fieldsError = LodashUtils.filter(form.getFieldsError(), o => !LodashUtils.isEmpty(o.errors));
-    const isFormValid = LodashUtils.isEmpty(fieldsError);
+    const handleSubmit = (values) => {
+        onSubmit(new CafeModel({ ...cafe, ...values }));
+        form.resetFields();
+    }
 
     return (
         <Form
@@ -32,7 +31,7 @@ function UpdateCafeForm({ cafe, onSubmit, onCancel }: IProps) {
                 name="name"
                 rules={[{ required: true, message: 'Field can not be empty!' }]}
             >
-                <Input />
+                <Input minLength={6} maxLength={10} />
             </Form.Item>
             <Form.Item
                 required
@@ -40,7 +39,7 @@ function UpdateCafeForm({ cafe, onSubmit, onCancel }: IProps) {
                 name="location"
                 rules={[{ required: true, message: 'Field can not be empty!' }]}
             >
-                <Input />
+                <Input.TextArea maxLength={256} />
             </Form.Item>
             <Form.Item
                 required
@@ -48,11 +47,17 @@ function UpdateCafeForm({ cafe, onSubmit, onCancel }: IProps) {
                 name="description"
                 rules={[{ required: true, message: 'Field can not be empty!' }]}
             >
-                <Input.TextArea />
+                <Input.TextArea maxLength={256} />
+            </Form.Item>
+            <Form.Item
+                label="Logo"
+                name="logo"
+            >
+                <Input />
             </Form.Item>
             <Space style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={onCancel}>Cancel</Button>
-                <Button htmlType="submit" type="primary" disabled={!isFormValid}>Save Changes</Button>
+                <Button htmlType="submit" type="primary">Save Changes</Button>
             </Space>
         </Form>
     );

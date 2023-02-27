@@ -8,11 +8,7 @@ import {
   removeOneEmployee,
 } from '@api/employee';
 
-import type {
-  GetListEmployeeParams,
-  CreateNewEmployeePayload,
-  UpdateExistingEmployeePayload,
-} from '@api/employee';
+import type { GetListEmployeeParams } from '@api/employee';
 import { EmployeeModel } from '@models/employee.model';
 
 import { useGlobalLoading } from '@hooks/useGlobalLoading';
@@ -53,17 +49,22 @@ export const useEmployee = () => {
   );
 
   const create = useCallback(
-    async (payload: CreateNewEmployeePayload) => {
+    async (createData: EmployeeModel) => {
       const loadingId = loading.present({
         title: 'Create Employee data',
         subtitle: 'Please wait for a while',
       });
       try {
-        const response = await createNewEmployee(payload);
-        const newEmployee = LodashUtils.get(response, 'data', null);
-        setEmployeeList((prev) =>
-          prev.concat([new EmployeeModel(newEmployee)]),
-        );
+        const response = await createNewEmployee({
+          name: createData.name,
+          email_address: createData.email_address,
+          gender: createData.gender,
+          phone_number: createData.phone_number,
+          cafe_id: createData.cafe_id,
+        });
+        const created = LodashUtils.get(response, 'data', null);
+        const newEmployee = new EmployeeModel({ ...createData, ...created });
+        setEmployeeList((prev) => prev.concat([newEmployee]));
         notification.success({ type: 'success', message: 'Successful' });
       } catch (error) {
         notification.error({
@@ -73,8 +74,6 @@ export const useEmployee = () => {
             'Can not update employee information',
           ),
           type: 'error',
-          closeIcon: true,
-          duration: 3000,
         });
       } finally {
         loading.dismiss(loadingId);
@@ -84,17 +83,24 @@ export const useEmployee = () => {
   );
 
   const update = useCallback(
-    async (payload: UpdateExistingEmployeePayload) => {
+    async (updateData: EmployeeModel) => {
       const loadingId = loading.present({
         title: 'Update Employee data',
         subtitle: 'Please wait for a while',
       });
       try {
-        await updateExistingEmployee(payload);
+        await updateExistingEmployee({
+          id: updateData.id,
+          name: updateData.name,
+          email_address: updateData.email_address,
+          gender: updateData.gender,
+          phone_number: updateData.phone_number,
+          cafe_id: updateData.cafe_id,
+        });
         setEmployeeList((prev) =>
           prev.map((employee) =>
-            employee.id === payload.id
-              ? new EmployeeModel({ ...employee, ...payload })
+            employee.id === updateData.id
+              ? new EmployeeModel({ ...employee, ...updateData })
               : employee,
           ),
         );
@@ -107,8 +113,6 @@ export const useEmployee = () => {
             'Can not update employee information',
           ),
           type: 'error',
-          closeIcon: true,
-          duration: 3000,
         });
       } finally {
         loading.dismiss(loadingId);
@@ -131,8 +135,6 @@ export const useEmployee = () => {
         notification.error({
           message: LodashUtils.get(error, 'message', 'Can not remove employee'),
           type: 'error',
-          closeIcon: true,
-          duration: 3000,
         });
       } finally {
         loading.dismiss(loadingId);

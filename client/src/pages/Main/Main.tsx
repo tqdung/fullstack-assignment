@@ -22,7 +22,7 @@ export default function MainPage() {
 
     return (
         <Layout>
-            <Header>Header</Header>
+            <Header></Header>
             <Layout>
                 <Sider width={200} style={{ backgroundColor: colorBgContainer }}>
                     <Menu

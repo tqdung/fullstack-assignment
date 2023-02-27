@@ -1,3 +1,14 @@
+export class Validation {
+  static RegexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  static isValidEmail(input: string): boolean {
+    return this.RegexEmail.test(String(input).toLowerCase());
+  }
+
+  static RegexPhoneNumber = /[8|9]\d{7}/;
+  static isValidPhoneNumber(input: string): boolean {
+    return this.RegexPhoneNumber.test(String(input));
+  }
+}
 export class Helpers {
   static generateID(length = 8): string {
     let result = '';
