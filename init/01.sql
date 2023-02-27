@@ -88,57 +88,61 @@ INSERT INTO `Cafe` (
 VALUES 
   (
     'Coffee House', 'A cozy cafe with a variety of coffee options', 
-    '123 Main Street', 'https://example.com/coffee-house-logo.png', 
+    '123 Main Street', 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Coffee_Bean_%26_Tea_Leaf_logo.svg/1200px-Coffee_Bean_%26_Tea_Leaf_logo.svg.png', 
     '6d1bba59-a376-41b3-81da-7ca21327a9bb', 
     NOW(), NOW()
   ), 
   (
     'Java Junction', 'A local favorite for espresso drinks and pastries', 
-    '456 Oak Avenue', 'https://example.com/java-junction-logo.png', 
+    '456 Oak Avenue', 'https://i.pinimg.com/originals/e4/c5/2e/e4c52e3c628b90fd38b036c7e99d9d5e.jpg', 
     '36af1be9-f9f1-4a77-b575-8f0ab5515f60', 
     NOW(), NOW()
   ), 
   (
     'Brewed Awakening', 'A rustic cafe with outdoor seating and homemade pastries', 
-    '789 Elm Street', NULL, '138da7c8-481b-4e6f-b5aa-55e2f78bccb1', 
+    '789 Elm Street', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxGCiIlzAfkDhOmVllk4lZ_0TRxYovnCGgDg&usqp=CAU',
+    '138da7c8-481b-4e6f-b5aa-55e2f78bccb1', 
     NOW(), NOW()
   ), 
   (
     'The Daily Grind', 'A popular cafe with a laid-back atmosphere and free WiFi', 
-    '321 Maple Road', 'https://example.com/daily-grind-logo.png', 
+    '321 Maple Road', 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=1700/uploads/users/1223/posts/32827/image/Coffee%20Brand%20Logo%20Maker%20with%20Coffee%20Beans%20Line%20Art.jpg', 
     'fdbcb6d8-139c-416b-9476-6ebff8a7d550', 
     NOW(), NOW()
   ), 
   (
     'Cafe Latte', 'A charming little cafe with a wide selection of lattes and teas', 
-    '567 Pine Street', NULL, 'a8f5150b-062d-4037-8b3d-8e5c26f23f51', 
+    '567 Pine Street','https://cms-assets.tutsplus.com/cdn-cgi/image/width=1700/uploads/users/2659/posts/32827/image/Art%20Gallery%20Coffee%20Shop%20Logo.jpg',
+    'a8f5150b-062d-4037-8b3d-8e5c26f23f51', 
     NOW(), NOW()
   ), 
   (
     'Perks & Beans', 'A cozy cafe that specializes in artisanal coffee and homemade baked goods', 
-    '890 Oak Lane', 'https://example.com/perks-and-beans-logo.png', 
+    '890 Oak Lane', 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=1700/uploads/users/2659/posts/32827/image/Traditional%20Coffee%20Shop%20Logo%20Maker.jpg', 
     '7016aee7-71e6-477e-947c-fb577d59211e', 
     NOW(), NOW()
   ), 
   (
     'Cuppa Joe\'s', 'A casual coffeehouse with a funky vibe and live music', 
-    '432 Elm Street', NULL, '65d89188-8f86-4d07-98f0-f82f45a71741', 
+    '432 Elm Street', 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=1700/uploads/users/1223/posts/32827/image/Coffee%20Shop%20Logo%20Maker.jpg',
+    '65d89188-8f86-4d07-98f0-f82f45a71741', 
     NOW(), NOW()
   ), 
   (
     'The Roasted Bean', 'A trendy cafe that roasts their own beans and serves a mean cappuccino', 
-    '765 Main Street', 'https://example.com/roasted-bean-logo.png', 
+    '765 Main Street', 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=1700/uploads/users/2659/posts/32827/image/Classic%20Coffee%20Shop%20Logo%20Maker.jpg', 
     '730f91ed-3dec-4fd0-83be-4305a5ccbb75', 
     NOW(), NOW()
   ), 
   (
     'Java Express', 'A fast-paced cafe with drive-through service and a loyalty program', 
-    '234 Maple Road', NULL, '06cac43f-67ed-4a37-ad48-144005e82969', 
+    '234 Maple Road', 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=1700/uploads/users/1223/posts/32827/image/Coffee%20Shop%20Logo%20Maker%20with%20Funny%20Graphics_.jpg',
+    '06cac43f-67ed-4a37-ad48-144005e82969', 
     NOW(), NOW()
   ), 
   (
     'Cafe Mocha', 'A cozy spot for a rich and creamy mocha, with free WiFi and board games', 
-    '901 Pine Street', 'https://example.com/cafe-mocha-logo.png', 
+    '901 Pine Street', 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=1700/uploads/users/2659/posts/32827/image/Coffee%20Shop%20Logo%20Maker%20with%20Coffee%20Icons.jpg', 
     '76ba469f-6afa-4f8b-b70b-c37e34100c2d', 
     NOW(), NOW()
   );

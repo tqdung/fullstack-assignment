@@ -134,6 +134,8 @@ That project is an demo for a CRUD application named Cafe manager, which include
 
 ```sh
   docker-compose -f docker-compose.yml up --build
+
+  open http://localhost:3000
 ```
 
 [React.js]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
