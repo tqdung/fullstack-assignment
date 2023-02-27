@@ -4,6 +4,7 @@ WORKDIR /app
 COPY client /app/client
 COPY server /app/server
 RUN cd /app/client && npm install && npm run build
+RUN cd /app/server/ && mkdir public
 RUN cp -r /app/client/build/* /app/server/public
 RUN cd /app/server && npm install
 

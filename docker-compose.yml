@@ -2,15 +2,19 @@ version: "3"
 services:
   mysql-service:
     image: mysql/mysql-server:8.0.28
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root@123456
       MYSQL_DATABASE: fullstack_assignment
       MYSQL_ROOT_HOST: "%"
     container_name: mysql-service
     ports:
-      - "3306:3306"
+      - "13306:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
   web-service:
     image: web-service
+    restart: always
     environment:
       NODE_ENV: production
     build:

@@ -133,7 +133,6 @@ That project is an demo for a CRUD application named Cafe manager, which include
 ## Build production
 
 ```sh
-  docker pull mysql/mysql-server:8.0.28
   docker-compose -f docker-compose.yml up --build
 ```
 
